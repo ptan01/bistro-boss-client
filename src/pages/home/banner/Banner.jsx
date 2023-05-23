@@ -12,7 +12,7 @@ const Banner = () => {
     // React.js React Responsive Carousel (awesome-react-component)
     return (
         <div>
-            <Carousel emulateTouch='true'>
+            <Carousel emulateTouch={true}>
                 <div>
                     <img src={img1} />
                 </div>
