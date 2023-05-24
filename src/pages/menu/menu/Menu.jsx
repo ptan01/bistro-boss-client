@@ -13,6 +13,7 @@ import soupImg from '../../../assets/menu/soup-bg.jpg'
 const Menu = () => {
 
     const [menu] = useMenu()
+    
 
     const offered = menu.filter(item => item.category === 'offered')
     const pizza = menu.filter(item => item.category === 'pizza')
@@ -37,7 +38,7 @@ const Menu = () => {
             {/* dessert menu items*/}
             <MenuCategory items={dessert} title='dessert' img={dessertImg}></MenuCategory>
             {/* Pizza menu items */}
-            <MenuCategory items={pizza} title="Pizza" img={pizzaImg}></MenuCategory>
+            <MenuCategory items={pizza} title="pizza" img={pizzaImg}></MenuCategory>
             {/* salad menu items */}
             <MenuCategory items={salad} title="salad" img={saladImg}></MenuCategory>
             {/* soup menu items */}
