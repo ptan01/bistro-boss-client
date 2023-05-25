@@ -5,7 +5,11 @@ import Fetured from "../fetured/Fetured";
 import PopularMenu from "../popularMenu/PopularMenu";
 import Testimonials from "../testimonials/Testimonials";
 
+
 const Home = () => {
+
+    
+
     return (
         <div>
             <Helmet>

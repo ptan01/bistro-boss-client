@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha'
+import { AuthContext } from '../../proveder/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
 
-
+    const { loginUser } = useContext(AuthContext)
     const [disabled, setDisabled] = useState(true)
-   const captchaRef = useRef()
+    const captchaRef = useRef()
 
 
     const handleLogin = (event) => {
@@ -14,19 +16,27 @@ const Login = () => {
         const email = event.target.email.value;
         const pass = event.target.password.value;
         console.log(email, pass)
+        loginUser(email, pass)
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
-    useEffect(()=>{
-        loadCaptchaEnginge(6); 
-    },[])
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
 
-    const handleCaptcha =(e)=>{
+    const handleCaptcha = (e) => {
         e.preventDefault()
-        const user_captcha_value = captchaRef.current.value ;
-        if(validateCaptcha(user_captcha_value)){
+        const user_captcha_value = captchaRef.current.value;
+        if (validateCaptcha(user_captcha_value)) {
             setDisabled(false)
         }
-        else{
+        else {
             setDisabled(true)
         }
     }
@@ -52,9 +62,7 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -66,6 +74,9 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
+                        <label className="label">
+                            <p><small>New here ? Please <Link to='/register'>Sign Up</Link></small></p>
+                        </label>
                     </form>
                 </div>
             </div>
