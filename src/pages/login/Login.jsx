@@ -8,12 +8,13 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
     const { loginUser } = useContext(AuthContext)
+    // eslint-disable-next-line no-unused-vars
     const [disabled, setDisabled] = useState(true)
     const location = useLocation() ;
     const navigate = useNavigate()
 
 
-    console.log(location.state.from.pathname)
+
 
     const from = location.state?.from?.pathname || '/'
     
@@ -92,7 +93,7 @@ const Login = () => {
                             
                         </div>
                         <div className="form-control mt-6">
-                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
+                            <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                         </div>
                         <label className="label">
                             <p><small>New here ? Please <Link to='/register'>Sign Up</Link></small></p>
