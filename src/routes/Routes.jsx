@@ -7,6 +7,8 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import PrivetRoute from "./PrivetRoute";
 import Secret from "../pages/secret/Secret";
+import Dashbord from "../leyout/Dashbord";
+import MyCard from "../pages/myCard/MyCard";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +38,16 @@ export const router = createBrowserRouter([
             {
                 path: '/secret',
                 element: <PrivetRoute><Secret></Secret></PrivetRoute>
+            }
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashbord></Dashbord>,
+        children: [
+            {
+                path: '/dashboard/mycard',
+                element: <MyCard></MyCard>
             }
         ]
     }
