@@ -14,7 +14,7 @@ const Category = () => {
     return (
         <section>
             <SectionTitle heading={'order online'} subHeading={'from 11.00am to 10.00pm'}></SectionTitle>
-            <div className="w-2/3 mx-auto">
+            <div className="lg:w-2/3 mx-auto">
                 <Swiper
                     slidesPerView={4}
                     spaceBetween={30}
@@ -26,23 +26,23 @@ const Category = () => {
                 >
                     <SwiperSlide>
                         <img src={slide1} alt="" />
-                        <h2 className="text-4xl text-center -mt-16 pb-10 text-white">Salad</h2>
+                        <h2 className="lg:text-4xl text-center -mt-16 pb-10 text-white">Salad</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slide2} alt="" />
-                        <h2 className="text-4xl text-center -mt-16 pb-10 text-white">Soups</h2>
+                        <h2 className="lg:text-4xl text-center -mt-16 pb-10 text-white">Soups</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slide3} alt="" />
-                        <h2 className="text-4xl text-center -mt-16 pb-10 text-white">Pizzas</h2>
+                        <h2 className="lg:text-4xl text-center -mt-16 pb-10 text-white">Pizzas</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slide4} alt="" />
-                        <h2 className="text-4xl text-center -mt-16 pb-10 text-white">desserts</h2>
+                        <h2 className="lg:text-4xl text-center -mt-16 pb-10 text-white">desserts</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slide5} alt="" />
-                        <h2 className="text-4xl text-center -mt-16 pb-10 text-white">Salad</h2>
+                        <h2 className="lg:text-4xl text-center -mt-16 pb-10 text-white">Salad</h2>
                     </SwiperSlide>
                 </Swiper>
             </div>
