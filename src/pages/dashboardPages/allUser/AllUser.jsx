@@ -3,13 +3,16 @@ import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import { HiUserGroup } from 'react-icons/hi';
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AllUser = () => {
 
+    const [axiosInstance] = useAxiosSecure()
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
-        return res.json()
+        const res = await axiosInstance.get('/users')
+        return res.data
     })
 
 
@@ -37,6 +40,7 @@ const AllUser = () => {
 
 
     // TODO: USER DELETE NOT COMPLITE
+    // eslint-disable-next-line no-unused-vars
     const handleDelete = () => {
 
     }
