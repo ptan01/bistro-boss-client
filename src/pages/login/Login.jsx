@@ -3,6 +3,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { AuthContext } from '../../proveder/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocalSignIn from '../../components/socalSignIn/SocalSignIn';
 
 
 const Login = () => {
@@ -99,6 +100,7 @@ const Login = () => {
                             <p><small>New here ? Please <Link to='/register'>Sign Up</Link></small></p>
                         </label>
                     </form>
+                    <SocalSignIn></SocalSignIn>
                 </div>
             </div>
         </div>
