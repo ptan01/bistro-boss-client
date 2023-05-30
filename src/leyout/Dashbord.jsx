@@ -2,13 +2,16 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaUser, FaBook,FaUtensils } from 'react-icons/fa'
 import { HiMenuAlt2 } from 'react-icons/hi';
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashbord = () => {
 
     const [card] = useCart()
 
+    const [isAdmin] = useAdmin()
 
-    const admin = true;
+    // const admin = isAdmin;
+    // const admin = true;
 
 
     return (
@@ -29,7 +32,7 @@ const Dashbord = () => {
                         <h2 className="text-3xl font-bold">Bistro Boss</h2>
                         <p>Restaurant</p>
                     </div>
-                    {admin ? 
+                    {isAdmin ? 
                     <>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/reservation'><FaUtensils></FaUtensils> Items</NavLink></li>
