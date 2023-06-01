@@ -1,10 +1,48 @@
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../../components/sectionTitle/SectionTitle';
 import useMenu from '../../../hooks/useMenu';
+import { FaTrashAlt } from 'react-icons/fa';
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from 'sweetalert2';
 
 const ManageItem = () => {
 
-    const [menu] = useMenu()
+    const [menu, , refetch] = useMenu();
+    const [axiosInstance] = useAxiosSecure();
+
+    const handleDelete = (id) => {
+        console.log(id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`/menu/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if(res.data.deletedCount > 0){
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
+    // Swal.fire(
+    //     'Deleted!',
+    //     'Your file has been deleted.',
+    //     'success'
+    // )
 
     return (
         <div className='w-full'>
@@ -21,7 +59,7 @@ const ManageItem = () => {
                     <thead>
                         <tr>
                             <th>
-                              #
+                                #
                             </th>
                             <th>ITEM IMAGE</th>
                             <th>ITEM NAME</th>
@@ -35,7 +73,7 @@ const ManageItem = () => {
                         {
                             menu.map(item => <tr key={item._id}>
                                 <td>
-                                   1
+                                    1
                                 </td>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -47,15 +85,18 @@ const ManageItem = () => {
                                     </div>
                                 </td>
                                 <td>
-                                   {item.name}
+                                    {item.name}
                                 </td>
                                 <td>{item.price}</td>
-                                <th>
+                                <td>
                                     <button className="btn btn-ghost btn-xs">details</button>
-                                </th>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-ghost bg-red-700 btn-xl"><FaTrashAlt className="text-2xl"></FaTrashAlt></button>
+                                </td>
                             </tr>)
                         }
-                        
+
                     </tbody>
                 </table>
             </div>
