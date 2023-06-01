@@ -10,6 +10,8 @@ import Secret from "../pages/secret/Secret";
 import Dashbord from "../leyout/Dashbord";
 import MyCard from "../pages/dashboardPages/myCard/MyCard";
 import AllUser from "../pages/dashboardPages/allUser/AllUser";
+import AddItem from "../pages/dashboardPages/addItem/AddItem";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/alluser',
                 element: <AllUser></AllUser>
+            },
+            {
+                path: '/dashboard/additem',
+                element: <AdminRoute><AddItem></AddItem></AdminRoute>
             }
         ]
     }
