@@ -23,7 +23,7 @@ const useCart = () => {
         enabled: !loading ,
         queryFn: async () => {
             const response =  await axiosInstance(`/cards?email=${user?.email}`)
-            console.log(response)
+            // console.log(response)
             return response.data 
         },
     })

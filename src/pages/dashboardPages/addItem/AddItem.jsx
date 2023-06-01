@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../components/sectionTitle/SectionTitle";
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 
@@ -8,9 +10,11 @@ import { useForm } from 'react-hook-form';
 
 const AddItem = () => {
 
+    const [axiosInstance] = useAxiosSecure()
+
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Img_Hosting_Token}`
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
         const formData = new FormData();
@@ -26,6 +30,20 @@ const AddItem = () => {
                 const {category, name, recipe, price} = data ;
                 const newItem = {category, name , price : parseFloat(price), recipe, image : imgResponse.data.display_url}
                 console.log(newItem)
+                axiosInstance.post('/menu', newItem)
+                .then(data => {
+                    if(data.data.insertedId){
+                        reset()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                    console.log(data.data)
+                })
 
             }
             console.log(imgResponse)
@@ -61,11 +79,11 @@ const AddItem = () => {
                         </label>
                         <select defaultValue='Pick One' {...register("category", { required: true })} className="select select-bordered w-full">
                             <option disabled>Pick One</option>
-                            <option>Salad</option>
-                            <option>Pizza</option>
-                            <option>Soups</option>
-                            <option>Desserts</option>
-                            <option>Drinks</option>
+                            <option>salad</option>
+                            <option>pizza</option>
+                            <option>soups</option>
+                            <option>desserts</option>
+                            <option>drinks</option>
                         </select>
                     </div>
                 </div>

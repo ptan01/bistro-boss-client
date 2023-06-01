@@ -36,7 +36,7 @@ const Dashbord = () => {
                     <>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/additem'><FaUtensils></FaUtensils>Add Items</NavLink></li>
-                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/history'><HiMenuAlt2></HiMenuAlt2>Manage Items</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/manageitem'><HiMenuAlt2></HiMenuAlt2>Manage Items</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/history'><FaBook></FaBook>Manage BooKing</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/alluser'><FaUser></FaUser>All User</NavLink></li>
                     </>

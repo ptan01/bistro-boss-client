@@ -12,6 +12,7 @@ import MyCard from "../pages/dashboardPages/myCard/MyCard";
 import AllUser from "../pages/dashboardPages/allUser/AllUser";
 import AddItem from "../pages/dashboardPages/addItem/AddItem";
 import AdminRoute from "./AdminRoute";
+import ManageItem from "../pages/dashboardPages/manageItem/ManageItem";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/additem',
                 element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            },
+            {
+                path: '/dashboard/manageitem',
+                element: <ManageItem></ManageItem>
             }
         ]
     }
