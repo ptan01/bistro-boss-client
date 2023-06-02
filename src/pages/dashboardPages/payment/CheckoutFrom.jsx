@@ -2,8 +2,12 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import './common.css'
 
-const CheckoutFrom = ({price}) => {
+
+
+const CheckoutFrom = ({price, cart}) => {
 
   console.log(price)
   const [axiosInstance] = useAxiosSecure()
@@ -17,13 +21,14 @@ const CheckoutFrom = ({price}) => {
 
 
   useEffect(()=>{
-    console.log(price)
-    axiosInstance.post('/create-payment-intent', {price})
-    .then(res =>{
-      console.log(res.data.clientSecret)
-      setClientSecret(res.data.clientSecret)
-    })
-  },[])
+    if(price > 0){
+      axiosInstance.post('/create-payment-intent', {price})
+      .then(res =>{
+        console.log(res.data.clientSecret)
+        setClientSecret(res.data.clientSecret)
+      })
+    }
+  },[price, axiosInstance])
 
 
 
@@ -73,6 +78,32 @@ const CheckoutFrom = ({price}) => {
     setProcessing(false)
     if(paymentIntent.status === 'succeeded'){
       setTransactionID(paymentIntent.id)
+      const payment = {
+        email : user.email ,
+        price : price,
+        transactionId : paymentIntent.id ,
+        date: new Date(),
+        status: 'service pending',
+        quantity: cart.length ,
+        cartItems : cart.map(item => item._id),
+        menuItems: cart.map(item => item.foodId),
+        itemNames: cart.map(item => item.name)
+      }
+
+      axiosInstance.post('/payments', payment)
+      .then(res => {
+        console.log(res.data)
+        if(res.data.deleteResult.deletedCount > 0 && res.data.insartResult.insertedId ){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your Payment Success Fully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
+
     }
     console.log(paymentIntent)
 

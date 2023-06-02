@@ -21,10 +21,10 @@ const Payment = () => {
                 <title>Bistro Boss || Payment</title>
             </Helmet>
             <SectionTitle subHeading='please process' heading='Payment'></SectionTitle>
-            <h1>taka o poysa tumi uira uira jao (Ai page reload dile fetch korte pare na so reload dio na)</h1>
+            <h1>taka o poysa tumi uira uira jao</h1>
 
             <Elements stripe={stripePromise}>
-                <CheckoutFrom price={total}></CheckoutFrom>
+                <CheckoutFrom cart={card} price={total}></CheckoutFrom>
             </Elements>
         </div>
     );

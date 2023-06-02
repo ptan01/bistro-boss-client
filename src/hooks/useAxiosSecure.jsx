@@ -4,15 +4,17 @@ import { AuthContext } from '../proveder/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5000',
+});
+
 const useAxiosSecure = () => {
     //   const history = useHistory();
     const { logOut } = useContext(AuthContext)
     const navigate = useNavigate()
 
 
-    const axiosInstance = axios.create({
-        baseURL: 'http://localhost:5000',
-    });
+   
 
     useEffect(() => {
         axiosInstance.interceptors.request.use((config) => {
@@ -38,7 +40,7 @@ const useAxiosSecure = () => {
 
 
         return axiosInstance;
-    }, [logOut, navigate, axiosInstance]);
+    }, [logOut, navigate]);
 
     return [axiosInstance];
 };
