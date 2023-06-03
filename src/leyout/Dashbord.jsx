@@ -34,7 +34,7 @@ const Dashbord = () => {
                     </div>
                     {isAdmin ? 
                     <>
-                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/adminhome'><FaHome></FaHome> Admin Home</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/additem'><FaUtensils></FaUtensils>Add Items</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/manageitem'><HiMenuAlt2></HiMenuAlt2>Manage Items</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/history'><FaBook></FaBook>Manage BooKing</NavLink></li>
@@ -42,7 +42,7 @@ const Dashbord = () => {
                     </>
                      : 
                     <>
-                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/userhome'><FaHome></FaHome> User Home</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/reservation'><FaCalendarAlt></FaCalendarAlt> Reservation</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? 'text-white' : ''} to='/dashboard/mycard'><FaShoppingCart></FaShoppingCart> My card <div className="badge badge-secondary">+{card?.length}</div></NavLink></li>
