@@ -16,6 +16,7 @@ const AllUser = () => {
     })
 
 
+
     const handleMakeAdmin = (id) => {
         console.log(id)
         fetch(`http://localhost:5000/users/admin/${id}`, {
@@ -39,10 +40,24 @@ const AllUser = () => {
     }
 
 
-    // TODO: USER DELETE NOT COMPLITE
-    // eslint-disable-next-line no-unused-vars
-    const handleDelete = () => {
+    
+    const handleDelete = (userId) => {
 
+        axiosInstance.delete(`/users/delete/${userId}`)
+        .then(res => {
+            console.log(res.data)
+            if(res.data.deletedCount > 0){
+                refetch()
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'user has been deleted',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+            }
+        })
+    
     }
 
     return (
@@ -71,7 +86,7 @@ const AllUser = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role ? <p>Admin</p> : <button onClick={() => handleMakeAdmin(user._id)} className="btn btn-ghost bg-[#D1A054] btn-xl"><HiUserGroup className="text-2xl"></HiUserGroup></button>}</td>
-                                <td> <button className="btn btn-ghost bg-red-700 btn-xl"><FaTrashAlt className="text-2xl"></FaTrashAlt></button></td>
+                                <td> <button onClick={()=>handleDelete(user._id)} className="btn btn-ghost bg-red-700 btn-xl"><FaTrashAlt className="text-2xl"></FaTrashAlt></button></td>
                             </tr>)
                         }
 
