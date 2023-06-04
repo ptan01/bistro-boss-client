@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://bistro-boss-server-khaki.vercel.app',
 });
 
 const useAxiosSecure = () => {

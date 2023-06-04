@@ -21,7 +21,6 @@ const Payment = () => {
                 <title>Bistro Boss || Payment</title>
             </Helmet>
             <SectionTitle subHeading='please process' heading='Payment'></SectionTitle>
-            <h1>taka o poysa tumi uira uira jao</h1>
 
             <Elements stripe={stripePromise}>
                 <CheckoutFrom cart={card} price={total}></CheckoutFrom>

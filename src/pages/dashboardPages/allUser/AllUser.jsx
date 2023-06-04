@@ -19,7 +19,7 @@ const AllUser = () => {
 
     const handleMakeAdmin = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://bistro-boss-server-khaki.vercel.app/users/admin/${id}`, {
             method: 'PATCH',
 
         })

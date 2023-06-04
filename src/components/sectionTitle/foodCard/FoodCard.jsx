@@ -20,7 +20,7 @@ const FoodCard = ({ item }) => {
         console.log(item)
         if (user) {
             const cartItem = {foodId : _id, name, image , price, email : user.email  }
-            fetch('http://localhost:5000/cards', {
+            fetch('https://bistro-boss-server-khaki.vercel.app/cards', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -60,7 +60,7 @@ const FoodCard = ({ item }) => {
 
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card lg:w-96 w-full bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <p className="absolute right-0 bg-slate-800 text-white mr-5 mt-5 px-3 rounded-lg">${price}</p>
             <div className="card-body">

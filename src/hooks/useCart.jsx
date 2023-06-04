@@ -13,7 +13,7 @@ const useCart = () => {
     const { data: card = [], refetch } = useQuery({
         queryKey: ['cards', user?.email],
         // queryFn: async () => {
-        //     const response = await fetch(`http://localhost:5000/cards?email=${user?.email}`, {
+        //     const response = await fetch(`https://bistro-boss-server-khaki.vercel.app/cards?email=${user?.email}`, {
         //         headers: {
         //             authorization : `bearer ${token}`
         //         }
